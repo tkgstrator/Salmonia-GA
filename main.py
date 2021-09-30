@@ -11,7 +11,7 @@ class Salmonia:
     def __init__(self):
         self.iksm_session = os.environ.get("IKSM_SESSION")
         self.api_token = os.environ.get("API_TOKEN")
-        self.last_job_id = os.environ.get("LATEST_JOB_NUM")
+        self.last_job_id = int(os.environ.get("LATEST_JOB_NUM"))
 
         # 環境変数がセットされていない
         if self.iksm_session == None:
