@@ -10,6 +10,12 @@ from dotenv import load_dotenv
 
 class Salmonia:
     def __init__(self):
+        # ディレクトリの作成
+        try:
+            os.makedirs("summary")
+            os.makedirs("results")
+        except:
+            pass
         self.iksm_session = os.environ.get("IKSM_SESSION")
         self.api_token = os.environ.get("API_TOKEN")
         self.last_job_id = os.environ.get("LATEST_JOB_NUM")

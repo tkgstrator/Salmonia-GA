@@ -32,3 +32,14 @@ jobs:
           DEVELOPMENT: ${{ secrets.DEVELOPMENT }}
         run: |
           python main.py
+
+      - name: Commit and Push # 実行結果で差分が生じればレポジトリに反映
+        run: |
+          git config --local user.email ${{ secrets.EMAIL }}
+          git config --local user.name ${{ secrets.USERNAME }}
+          git pull
+          if (git diff --shortstat | grep '[0-9]'); then \
+            git add .; \
+            git commit -m "Add new results"; \
+            git push origin master; \
+          fi
