@@ -17,6 +17,12 @@ class Salmonia:
         if self.iksm_session == None:
             print("NO IKSM_SESSION IS SET")
             sys.exit()
+        if self.api_token == None:
+            print("NO API_TOKEN IS SET")
+            sys.exit()
+        if self.last_job_id == None:
+            print("NO JOB_ID IS SET")
+            sys.exit()
 
     def getResultsFromSplatNet2(self):
         for job_num in self.getLatestJobId():
