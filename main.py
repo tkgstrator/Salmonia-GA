@@ -8,6 +8,16 @@ import time
 from dotenv import load_dotenv
 
 
+class Summary:
+    def __init__(self):
+        self.job_num = None
+        self.ikura_total = None
+        self.golden_ikura_total = None
+        self.help_total = None
+        self.dead_total = None
+        self.kuma_point_total = None
+
+
 class Salmonia:
     def __init__(self):
         # ディレクトリの作成
@@ -19,7 +29,7 @@ class Salmonia:
         self.iksm_session = os.environ.get("IKSM_SESSION")
         self.api_token = os.environ.get("API_TOKEN")
         self.last_job_id = os.environ.get("LATEST_JOB_NUM")
-        self.development = os.environ.get("DEVELOPMENT") == None
+        self.development = os.environ.get("DEVELOPMENT") == None or os.environ.get("DEVELOPMENT") == False
 
         # 環境変数がセットされていない
         if self.iksm_session == None:
@@ -68,9 +78,8 @@ class Salmonia:
                 if response.status_code == 200:
                     print(f"Uploaded {job_num} result to Salmon Stats")
                     # バイトIDをアップデート
-                    os.environ["LATEST_JOB_NUM"] = str(job_num)
+                os.environ["LATEST_JOB_NUM"] = str(job_num)
                 time.sleep(5)
-            break
 
     def getLatestJobId(self):
         url = "https://app.splatoon2.nintendo.net/api/coop_results"
@@ -88,8 +97,11 @@ class Salmonia:
         else:
             return range(max(self.last_job_id + 1, latest_job_id - 49), latest_job_id + 1)
 
+    def updatePlayerStats():
+
 
 if __name__ == "__main__":
     load_dotenv()
     salmonia = Salmonia()
     salmonia.getResultsFromSplatNet2()
+    salmonia.updatePlayerStats()
