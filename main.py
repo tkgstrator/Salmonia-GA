@@ -30,6 +30,7 @@ class Salmonia:
         self.api_token = os.environ.get("API_TOKEN")
         self.last_job_id = os.environ.get("LATEST_JOB_NUM")
         self.development = os.environ.get("DEVELOPMENT") == None or os.environ.get("DEVELOPMENT") == False
+        print(self.iksm_session, self.last_job_id, self.api_token, self.development)
 
         # 環境変数がセットされていない
         if self.iksm_session == None:
@@ -51,10 +52,10 @@ class Salmonia:
             response = requests.get(url, cookies=dict(
                 iksm_session=self.iksm_session))
             if response.status_code == 403:
-                print("Forbidden")
+                print("SplatNet2: Forbidden")
                 sys.exit()
             if response.status_code == 404:
-                print("Not found")
+                print("SplatNet2: Not found")
                 continue
             if response.status_code == 200:
                 if self.development:
@@ -67,13 +68,13 @@ class Salmonia:
                 response = requests.post(url, data=json.dumps(
                     {"results": [response.json()]}), headers=header)
                 if response.status_code == 400:
-                    print("Bad request")
+                    print("Salmon Stats: Bad request")
                     sys.exit()
                 if response.status_code == 401:
-                    print("Unauthorized")
+                    print("Salmon Stats: Unauthorized")
                     sys.exit()
                 if response.status_code == 403:
-                    print("Forbidden")
+                    print("Salmon Stats: Forbidden")
                     sys.exit()
                 if response.status_code == 200:
                     print(f"Uploaded {job_num} result to Salmon Stats")
