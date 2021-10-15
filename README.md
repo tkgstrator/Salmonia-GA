@@ -32,3 +32,12 @@ Fork this repository and set environment variables as known as `Secrets`.
 ### Enable GitHub Actions
 
 In forked repository, GitHub Actions are disalbed by default, so you should enable it in the settings.
+
+## Build the development server
+
+```
+git clone https://github.com/tkgstrator/Salmonia-GA.git Salmonia
+cd Salmonia
+yarn install
+yarn dev
+```
