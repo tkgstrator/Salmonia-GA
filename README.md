@@ -1,7 +1,34 @@
-# Vue 3 + Vite
+# Salmonia for GitHub Actions
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Requirement
 
-## Recommended IDE Setup
+- iksm_session
+- api_token
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+### How to get tokens
+
+#### iksm_session
+
+[Salmonia](https://github.com/tkgstrator/Salmonia) generate a setting configuration file as `config.json` including `iksm_session` and `api_token`.
+
+#### api_token
+
+Register in [Salmon Stats](https://salmon-stats.yuki.games/) by twitter account and get api_token in settings.
+
+## Installation
+
+Fork this repository and set environment variables as known as `Secrets`.
+
+### Secrets
+
+| Key            | Value   | Description                | 
+| :------------: | :-----: | :------------------------: | 
+| IKSM_SESSION   | String  | iksm_session               | 
+| API_TOKEN      | String  | api_token for Salmon Stats | 
+| EMAIL          | String  | GitHub Account's           | 
+| USERNAME       | String  | GitHub Account's           | 
+| LATEST_JOB_NUM | Integer | 0                          | 
+
+### Enable GitHub Actions
+
+In forked repository, GitHub Actions are disalbed by default, so you should enable it in the settings.
