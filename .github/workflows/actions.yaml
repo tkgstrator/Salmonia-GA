@@ -37,6 +37,7 @@ jobs:
         run: |
           git config --local user.email ${{ secrets.EMAIL }}
           git config --local user.name ${{ secrets.USERNAME }}
+          git config pull.rebase false
           git pull
           if (git diff --shortstat | grep '[0-9]'); then \
             git add .; \
