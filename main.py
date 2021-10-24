@@ -98,12 +98,9 @@ class Salmonia:
         else:
             return range(max(self.last_job_id + 1, latest_job_id - 49), latest_job_id + 1)
 
-    def updatePlayerStats(self):
-        pass
 
 
 if __name__ == "__main__":
     load_dotenv()
     salmonia = Salmonia()
     salmonia.getResultsFromSplatNet2()
-    # salmonia.updatePlayerStats()
